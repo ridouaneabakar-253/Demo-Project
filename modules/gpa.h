@@ -3,8 +3,12 @@
 
 #include "courseResult.h"
 
-double getGradePoint(double marks);
-char *getLetterGrade(double marks);
+extern const double gradeBoundaries[];
+extern const double gradePoints[];
+extern const char *gradeLetters[];
+
+double getGradePoint(CourseResult result);
+char *getLetterGrade(CourseResult result);
 double calculateCGPA(CourseResult results[], int n_results);
 
 #endif
