@@ -3,12 +3,9 @@
 
 #include "courseResult.h"
 
-extern const double gradeBoundaries[];
-extern const double gradePoints[];
-extern const char *gradeLetters[];
-
+double getPercentage(CourseResult result);
 double getGradePoint(CourseResult result);
 char *getLetterGrade(CourseResult result);
-double calculateCGPA(CourseResult results[], int n_results);
+double calculateCGPA(CourseResult results[], int count);
 
 #endif
