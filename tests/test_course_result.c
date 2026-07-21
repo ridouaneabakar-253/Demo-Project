@@ -2,18 +2,18 @@
 #include "course.h"
 #include "courseResult.h"
 
-int testResultCourse()
+int testCompletedCourseResult()
 {
     Course course = createCourse("CSE 4202", "Structured Programming II Lab", 1.5);
-    CourseResult result = createCourseResult(&course, 77);
-    return result.course == &course;
+    CourseResult result = createCompletedCourseResult(&course, 77);
+    return result.completed == 1 && result.marks == 77;
 }
 
-int testResultMarks()
+int testIncompleteCourseResult()
 {
     Course course = createCourse("CSE 4202", "Structured Programming II Lab", 1.5);
-    CourseResult result = createCourseResult(&course, 77);
-    return result.marks == 77;
+    CourseResult result = createIncompleteCourseResult(&course);
+    return result.completed == 0;
 }
 
 int main()
@@ -23,9 +23,9 @@ int main()
     int total = 0;
 
     total++;
-    if (testResultCourse()) passed++;
+    if (testCompletedCourseResult()) passed++;
     total++;
-    if (testResultMarks()) passed++;
+    if (testIncompleteCourseResult()) passed++;
 
     printf("Passed %d/%d tests\n", passed, total);
     if (passed == total) return 0;

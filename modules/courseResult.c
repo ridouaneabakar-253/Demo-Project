@@ -14,7 +14,7 @@ CourseResult createIncompleteCourseResult(Course *course)
 {
     CourseResult result;
     result.course = course;
-    result.marks = 0.0;
+    result.marks = 0;
     result.completed = 0;
     return result;
 }
@@ -23,10 +23,9 @@ void viewCourseResult(CourseResult result)
 {
     printf("%s: %s\t\t [Credit: %.1f]\n",
            result.course->code, result.course->name, result.course->credit);
-    if (!result.completed)
-    {
-        printf("Incomplete\n");
-        return;
+    if (result.completed) {
+        printf("Marks: %.2f\n", result.marks);
+    } else {
+        printf("Status: Incomplete\n");
     }
-    printf("Marks: %.2f\n", result.marks);
 }

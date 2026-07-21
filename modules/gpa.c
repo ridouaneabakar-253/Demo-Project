@@ -37,7 +37,7 @@ char *getLetterGrade(CourseResult result)
     return "F";
 }
 
-double calculateGPA(CourseResult results[], int n_results)
+double calculateCGPA(CourseResult results[], int n_results)
 {
     double weighted_points = 0.0;
     double total_credits = 0.0;
