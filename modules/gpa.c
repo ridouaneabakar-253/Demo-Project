@@ -13,8 +13,9 @@ double getPercentage(CourseResult result)
 
 double getGradePoint(CourseResult result)
 {
-    if (!result.completed) return 0.0;
     double percentage = getPercentage(result);
+
+    if (!result.completed) return 0.0;
 
     for (int i = 0; i < 9; i++)
     {
@@ -26,8 +27,9 @@ double getGradePoint(CourseResult result)
 
 char *getLetterGrade(CourseResult result)
 {
-    if (!result.completed) return "I";
     double percentage = getPercentage(result);
+
+    if (!result.completed) return "I";
 
     for (int i = 0; i < 9; i++)
     {
@@ -37,7 +39,7 @@ char *getLetterGrade(CourseResult result)
     return "F";
 }
 
-double calculateCGPA(CourseResult results[], int n_results)
+double calculateGPA(CourseResult results[], int n_results)
 {
     double weighted_points = 0.0;
     double total_credits = 0.0;
@@ -51,4 +53,15 @@ double calculateCGPA(CourseResult results[], int n_results)
 
     if (total_credits == 0.0) return 0.0;
     return weighted_points / total_credits;
+}
+
+double calculateRequiredGPA(double current_cgpa, double completed_credits,
+                            double target_cgpa, double remaining_credits)
+{
+    double total_credits = completed_credits + remaining_credits;
+    double target_points = target_cgpa * total_credits;
+    double current_points = current_cgpa * completed_credits;
+
+    if (remaining_credits <= 0.0) return 0.0;
+    return (target_points - current_points) / remaining_credits;
 }
